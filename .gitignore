@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+
+.env
+docker/nexus/storage/*
+!docker/nexus/storage/.gitkeep

@@ -1,0 +1,30 @@
+#
+# Docker based environment.
+#
+---
+
+version: '3.7'
+
+services:
+  nexus-326:
+    container_name: 'nexus-326'
+    hostname: 'db'
+    build:
+      context: './docker/nexus'
+      target: 'nexus'
+
+    environment:
+      - NEXUS_DATA_DIR=${NEXUS_DATA_DIR}
+
+    volumes:
+      - ${NEXUS_DATA_DIR}:/nexus-data
+
+    networks:
+      - 'nexus-network'
+
+    ports:
+      - 8081:8081
+
+networks:
+  nexus-network:
+    name: 'nexus-network'
